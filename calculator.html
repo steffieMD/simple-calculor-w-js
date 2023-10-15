@@ -144,7 +144,9 @@
         onclick="
     calculation = eval(calculation)
     console.log(calculation)
-    displayCalculation()"
+    displayCalculation()
+    localStorage.setItem('Calculation', calculation)
+    "
       >
         =
       </button>
@@ -163,13 +165,14 @@
           calculation = '';
 
           displayCalculation();
+          localStorage.setItem('Calculation', calculation)
         "
       >
         Clear
       </button>
     </p>
     <script>
-      let calculation = "";
+      let calculation = localStorage.getItem("Calculation") || "";
 
       // Display the calculation when the page first loads.
       displayCalculation();
@@ -183,6 +186,8 @@
       const updateCalculation = (num) => {
         calculation += num;
         displayCalculation();
+
+        localStorage.setItem("Calculation", calculation);
       };
     </script>
   </body>
